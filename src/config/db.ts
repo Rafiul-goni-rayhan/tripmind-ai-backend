@@ -1,6 +1,12 @@
 import mongoose from "mongoose";
 
+let isConnected = false;
+
 const connectDB = async (): Promise<void> => {
+  if (isConnected) {
+    return;
+  }
+
   try {
     const uri = process.env.MONGODB_URI;
 
@@ -9,10 +15,11 @@ const connectDB = async (): Promise<void> => {
     }
 
     await mongoose.connect(uri);
+    isConnected = true;
     console.log("MongoDB connected successfully");
   } catch (error) {
     console.error("MongoDB connection failed:", error);
-    process.exit(1);
+    throw error;
   }
 };
 
