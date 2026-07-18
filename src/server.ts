@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 5000;
 // CORS must be configured before auth routes
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000", "https://tripmind-ai-frontend.vercel.app"],
     credentials: true,
   })
 );
