@@ -9,7 +9,7 @@ export interface IBooking extends Document {
   travelers: number;
   contactPhone: string;
   totalPrice: number;
-  status: "confirmed" | "cancelled";
+  status: "pending_payment" | "confirmed" | "cancelled";
   createdAt: Date;
  
 }
@@ -26,8 +26,8 @@ const BookingSchema: Schema = new Schema(
     totalPrice: { type: Number, required: true },
     status: {
       type: String,
-      enum: ["confirmed", "cancelled"],
-      default: "confirmed",
+       enum: ["pending_payment", "confirmed", "cancelled"],
+      default: "pending_payment",
     },
   },
   { timestamps: true }

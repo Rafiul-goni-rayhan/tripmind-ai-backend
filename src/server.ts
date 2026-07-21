@@ -8,8 +8,9 @@ import tripRoutes from "./routes/tripRoutes";
 import chatRoutes from "./routes/chatRoutes";
 import recommendationRoutes from "./routes/recommendationRoutes";
 import contactRoutes from "./routes/contactRoutes";
+// import bookingRoutes from "./routes/bookingRoutes";
 import bookingRoutes from "./routes/bookingRoutes";
-
+import paymentRoutes from "./routes/paymentRoutes";
 dotenv.config();
 
 const app = express();
@@ -44,7 +45,9 @@ app.use("/api/trips", tripRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/recommendations", recommendationRoutes);
 app.use("/api/contact", contactRoutes);
+// app.use("/api/bookings", bookingRoutes);
 app.use("/api/bookings", bookingRoutes);
+app.use("/api/payments", paymentRoutes);
 
 // Test route
 app.get("/", (req, res) => {

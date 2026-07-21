@@ -20,7 +20,7 @@ export const createBooking = async (req: Request, res: Response) => {
 
     const totalPrice = trip.price * Number(travelers);
 
-    const booking = await Booking.create({
+     const booking = await Booking.create({
       userId: currentUser.id,
       userName: currentUser.name,
       userEmail: currentUser.email,
@@ -29,6 +29,7 @@ export const createBooking = async (req: Request, res: Response) => {
       travelers,
       contactPhone,
       totalPrice,
+      status: "pending_payment",
     });
 
     res.status(201).json({ success: true, data: booking });
